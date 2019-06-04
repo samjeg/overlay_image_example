@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { vw } from 'react-native-expo-viewport-units';
 import FirstCircleLayer from './FirstCircleLayer';
 import SecondCircleLayer from './SecondCircleLayer';
 import FirstCircle from './FirstCircle';
 import SecondCircleAlter from './SecondCircleAlter';
-import PageImage from './PageImage';
-import { vw, vh } from 'react-native-expo-viewport-units';
+import PageView from './PageView';
+import PagePanel from './PagePanel';
 
 
 const jacketPath = require('./images/jacket1.jpeg');
@@ -46,7 +47,7 @@ class Page extends Component {
 								.secondCircleElevation
 							}                                              
 			>
-				<PageImage
+				<PageView
 					width={vw(40)} 
 					height={vw(40)} 
 					borderRadius={vw(40) / 2} 
@@ -67,7 +68,7 @@ class Page extends Component {
 								.secondCircleElevation
 							}
 			>
-				<PageImage 
+				<PagePanel
 					width={vw(50)} 
 					height={vw(30)} 
 					borderRadius={0} 
@@ -80,7 +81,7 @@ class Page extends Component {
 							firstCircleAlterElevation={
 								this
 								.state
-								.firstCircleElevation
+								.firstCircleAlterElevation
 							} 
 							secondCircleAlterElevation={
 								this
@@ -88,7 +89,7 @@ class Page extends Component {
 								.secondCircleAlterElevation
 							}
 			>
-				<PageImage 
+				<PagePanel
 					width={vw(40)} 
 					height={vw(40)} 
 					borderRadius={vw(40) / 2} 
@@ -113,7 +114,7 @@ class Page extends Component {
 								.secondCircleAlterElevation
 							}
 			>
-				<PageImage 
+				<PageView 
 					width={vw(50)} 
 					height={vw(30)} 
 					borderRadius={0} 
