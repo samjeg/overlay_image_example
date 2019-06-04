@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { vw, vh } from 'react-native-expo-viewport-units';
 
-class SecondCircleLayer extends Component { 
+class SecondCircleAlter extends Component { 
 	constructor(props) {
 		super(props);
 		this.state = { 
@@ -31,7 +31,9 @@ class SecondCircleLayer extends Component {
 			<TouchableOpacity
 				onPress={() => this.setElevation()} 
 				style={this.state.secondCircleStyle}                                               
-			/>
+			>
+				{this.props.children}
+			</TouchableOpacity>
 		);
 	}
 }
@@ -50,5 +52,5 @@ let styles = function (localElevation) {
 	});
 };
 
-export default SecondCircleLayer;
+export default SecondCircleAlter;
 

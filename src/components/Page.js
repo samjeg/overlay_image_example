@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import FirstCircleLayer from './FirstCircleLayer';
 import SecondCircleLayer from './SecondCircleLayer';
-import FirstCircleAlter from './FirstCircleAlter';
+import FirstCircle from './FirstCircle';
 import SecondCircleAlter from './SecondCircleAlter';
+import PageImage from './PageImage';
+import { vw, vh } from 'react-native-expo-viewport-units';
+
+
+const jacketPath = require('./images/jacket1.jpeg');
+const shirtPath = require('./images/shirt1.jpg');
 
 class Page extends Component {
 	constructor(props) {
@@ -39,7 +45,16 @@ class Page extends Component {
 								.state
 								.secondCircleElevation
 							}                                              
-			/>);
+			>
+				<PageImage
+					width={vw(40)} 
+					height={vw(40)} 
+					borderRadius={vw(40) / 2} 
+					imagePath={jacketPath} 
+				/>
+			</FirstCircleLayer>
+			); 
+							
 			secondCircle = (<SecondCircleLayer
 							firstCircleElevation={
 								this
@@ -50,21 +65,38 @@ class Page extends Component {
 								this
 								.state
 								.secondCircleElevation
-							} 
-			/>);
+							}
+			>
+				<PageImage 
+					width={vw(50)} 
+					height={vw(30)} 
+					borderRadius={0} 
+					imagePath={shirtPath} 
+				/>
+			</SecondCircleLayer>
+			);							
 		} else {
-			secondCircle = (<FirstCircleAlter
+			secondCircle = (<FirstCircle
 							firstCircleAlterElevation={
 								this
 								.state
-								.firstCircleAlterElevation
+								.firstCircleElevation
 							} 
 							secondCircleAlterElevation={
 								this
 								.state
 								.secondCircleAlterElevation
 							}
-			/>);
+			>
+				<PageImage 
+					width={vw(40)} 
+					height={vw(40)} 
+					borderRadius={vw(40) / 2} 
+					imagePath={jacketPath} 
+				/>
+			</FirstCircle>
+			);
+							
 			firstCircle = (<SecondCircleAlter 
 							onClick={() => this.setState({ 
 								renderAlternate: false
@@ -79,8 +111,16 @@ class Page extends Component {
 								this
 								.state
 								.secondCircleAlterElevation
-							}	
-			/>);
+							}
+			>
+				<PageImage 
+					width={vw(50)} 
+					height={vw(30)} 
+					borderRadius={0} 
+					imagePath={shirtPath}
+				/>
+			</SecondCircleAlter>
+			);
 		}
 
 		return (

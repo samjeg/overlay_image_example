@@ -12,9 +12,9 @@ class SecondCircleLayer extends Component {
 
 	render() {
 		return (
-			<View 
-				style={this.state.secondCircleStyle}                                               
-			/>
+			<View style={this.state.secondCircleStyle}>
+				{this.props.children}
+			</View>
 		);
 	}
 }

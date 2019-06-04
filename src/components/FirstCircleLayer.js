@@ -34,7 +34,9 @@ class FirstCircleLayer extends Component {
 			<TouchableOpacity
 				onPress={() => this.setElevation()} 
 				style={this.state.firstCircleStyle}                                               
-			/>
+			>
+				{this.props.children}
+			</TouchableOpacity>
 		);
 	}
 }

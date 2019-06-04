@@ -1,27 +1,28 @@
+
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { vw, vh } from 'react-native-expo-viewport-units';
 
 
-class FirstCircleAlter extends Component {
+class FirstCircle extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = { 
-			firstCircleStyle: styles().firstCircleLayerStyle,
+			firstCircleStyle: styles(this.props.firstCircleAlterElevation).firstCircleLayerStyle,
 		};
 	}
 
 	render() {
 		return (
-			<View tyle={this.state.firstCircleStyle}>
+			<View style={this.state.firstCircleStyle}>
 				{this.props.children}
 			</View>
 		);
 	}
 }
 
-const styles = function () {
+let styles = function (localElevation) {
    return ({
 		firstCircleLayerStyle: {
 			position: 'absolute',
@@ -32,10 +33,10 @@ const styles = function () {
 			marginHorizontal: vw(30),
 			marginVertical: (vh(100) - vw(40)) / 2,
 			alignItems: 'center',
-			elevation: 50
+			elevation: localElevation
 		},
    });
  };
  
-export default FirstCircleAlter;
+export default FirstCircle;
 
