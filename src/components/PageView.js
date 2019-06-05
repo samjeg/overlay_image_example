@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { vw } from 'react-native-expo-viewport-units';
+// import { vw } from 'react-native-expo-viewport-units';
 
 
 const PageView = ({ width, height, borderRadius, imagePath }) => {

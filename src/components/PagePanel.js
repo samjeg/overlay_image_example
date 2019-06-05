@@ -1,5 +1,12 @@
 import React from 'react';
-import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { 
+			ImageBackground, 
+			Text, 
+			TouchableOpacity, 
+			View,
+			TouchableWithoutFeedback,
+			StyleSheet 
+} from 'react-native';
 import { vw } from 'react-native-expo-viewport-units';
 
 
@@ -17,7 +24,15 @@ const PagePanel = ({ width, height, borderRadius, imagePath }) => {
 					onPress={() => console.log('Hello Page Image')} 
 					style={styles(width, height, borderRadius).touchStyle}
 				>
-					<Text style={imageStyles.imageStyle}>
+					<TouchableWithoutFeedback 
+						style={styles(width, height, borderRadius).buttonContainerStyle} 
+					>
+						<TouchableOpacity 
+							style={styles(width, height, borderRadius).buttonStyle}
+							onPress={() => console.log('Button pressed')}
+						/>
+					</TouchableWithoutFeedback>
+					<Text style={styles(width, height, borderRadius).imageStyle}>
 						☹
 					</Text>
 				</TouchableOpacity>
@@ -31,9 +46,8 @@ const PagePanel = ({ width, height, borderRadius, imagePath }) => {
 let styles = function (wd, hgt, br) {
    return ({
 		imageBackgroundStyle: {
-			width: '100%',
-			height: '100%',
-			// resizeMode: 'center',
+			width: wd,
+			height: hgt,
 			borderColor: '#000',
 			justifyContent: 'center',
 			alignItems: 'center',
@@ -49,45 +63,38 @@ let styles = function (wd, hgt, br) {
 			overflow: 'hidden'
 		},
 		touchStyle: {
-			width: '100%',
-			height: '100%',
+			width: wd,
+			height: hgt,
 			borderColor: '#000',
+			justifyContent: 'flex-start',
+			alignItems: 'center',
+			position: 'absolute',
+		},
+		buttonContainerStyle: {
+			width: wd,
+			height: hgt / 3,
+			borderRadius: br,
 			justifyContent: 'center',
 			alignItems: 'center',
-			// borderWidth: 1,
-			// borderWidth: 1,
-			// borderRadius: br,
-			// borderRadius: br,
+			overflow: 'hidden'
 		},
-   });
- };
-
- const imageStyles = {
-	imageStyle: {
+		buttonStyle: {
+			width: wd,
+			height: hgt / 3,
+			borderRadius: br,
+			backgroundColor: '#000',
+		},
+		imageStyle: {
 		width: vw(15),
 		height: vw(15),
 		fontSize: vw(13),
 		textAlign: 'center',
 		color: '#000',
 		overflow: 'hidden'
-		// justifyContent: 'center',
-		// alignItems: 'center'
-		// backgroundColor: '#000',
-		// tintColor: '#FFF',
-		// overlayColor: '#41F4F1'
-		// background: '#00FFFFFF'
-		// backfaceVisibility: 'hidden'
-		// opacity: 0.05
-	}
- };
+		},
+   });
+};
 
- // const testStyles = {
- //    testStyle: {
- //        width: vw(15),
- //        height: vw(15),
- //        background: '#00FFFFFF'
- //    }
- // };
 
 export default PagePanel;
 
